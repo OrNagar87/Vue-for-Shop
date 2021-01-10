@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wraper">
     <section class="products" v-for="val in objects" :key="val.id">
       <div class="product-card" v-if="val.category === selected">
         <div class="product-image">
@@ -21,16 +21,9 @@ export default {
 </script>
 
 <style>
-ul {
-  list-style: none;
-}
-section {
-  display: none;
-}
 h1 {
   font-size: 28px;
   font-weight: 300;
-  flex: 1;
 }
 
 h5 {
@@ -51,26 +44,34 @@ label {
   text-transform: uppercase;
 }
 
-.products {
+.wraper {
   display: flex;
+  border: 1px solid silver;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+
+  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-}
-.wrapper {
 }
 
 .product-card {
   border: 4px groove blue;
-  display: flex;
-  flex-direction: column;
-  padding: 2%;
-  flex: 1 16%;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  margin: 5px;
+  width: 300px;
+  height: 300px;
 
   background-color: #fff;
   box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
 }
 
 .product-image img {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   height: 180px;
@@ -79,7 +80,7 @@ label {
 
 .product-info {
   margin-top: auto;
-  padding-top: 20px;
+
   text-align: center;
 }
 </style>

@@ -53,7 +53,7 @@ export default {
           rv[x[key]] = true || [];
           return rv;
         }, {});
-      return Object.keys(groupBy(this.objects, "category"));
+      return Object.keys(groupBy(this.objects, "category", "id"));
     },
   },
   mounted() {
