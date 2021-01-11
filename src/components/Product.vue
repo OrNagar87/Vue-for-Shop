@@ -1,9 +1,11 @@
 <template>
   <div class="wraper">
-    <section class="products" v-for="val in objects" :key="val.id">
+    <section class="products" v-for="val in objects" :key="val.id" :id="val.id">
       <div class="product-card" v-if="val.category === selected">
         <div class="product-image">
-          <img :src="val.image" alt="" />
+          <router-link :to="`/about/${val.id}`">
+            <img :src="val.image" alt="" />
+          </router-link>
         </div>
         <div class="product-info">
           <h5>{{ val.title }}</h5>
