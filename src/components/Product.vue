@@ -7,7 +7,10 @@
         </div>
         <div class="product-info">
           <h5>{{ val.title }}</h5>
-          <h6>{{ val.price }}</h6>
+          <h6>{{ val.price }}$</h6>
+        </div>
+        <div class="adding">
+          <AddToCart @click="add(val.id)" :id="val.id" />
         </div>
       </div>
     </section>
@@ -15,12 +18,19 @@
 </template>
 
 <script>
+import AddToCart from "./AddToCart";
 export default {
-  props: ["objects", "selected"],
+  props: ["objects", "selected", "add"],
+  components: {
+    AddToCart,
+  },
 };
 </script>
 
 <style>
+.adding {
+  margin-top: -85px;
+}
 h1 {
   font-size: 28px;
   font-weight: 300;
@@ -43,7 +53,6 @@ label {
   line-height: 2em;
   text-transform: uppercase;
 }
-
 .wraper {
   display: flex;
   border: 1px solid silver;

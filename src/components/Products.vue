@@ -17,9 +17,10 @@
         </div>
       </div>
       <button class="remove_item" @click="removeLastItem()">remove item</button>
+      <div class="cart">Cart Quantity:{{ cart }}</div>
     </nav>
 
-    <Product :objects="objects" :selected="selected" />
+    <Product :objects="objects" :selected="selected" :add="AddCart" />
   </div>
 </template>
 
@@ -35,6 +36,7 @@ export default {
     return {
       selected: "men clothing",
       objects: [],
+      cart: 0,
     };
   },
   components: {
@@ -45,7 +47,13 @@ export default {
       this.objects.splice(this.objects.length - 1);
       alert("remove");
     },
+    AddCart(id) {
+      this.cart++;
+
+      console.log("adding" + this.objects[id].title);
+    },
   },
+
   computed: {
     categories() {
       const groupBy = (xs, key) =>
@@ -67,27 +75,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.cart {
+  border: 3px groove rgb(199, 108, 199);
+  margin: 10px;
+  padding: 5px;
+  width: 180px;
+}
 .our_products {
   border: 4px groove orange;
   color: black;
 }
 .product-filter {
-  display: flex;
-  padding: 30px 0;
+  padding: 10px 0;
 }
 .remove_item {
-  display: flex;
   float: right;
+  width: 180px;
+  margin: 10px;
+  padding: 5px;
 }
 
 .sort {
-  display: flex;
-  align-self: flex-end;
 }
 
 .collection-sort {
-  display: flex;
-  flex-direction: column;
 }
 
 .collection-sort:first-child {
