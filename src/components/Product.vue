@@ -3,7 +3,7 @@
     <section class="products" v-for="val in objects" :key="val.id" :id="val.id">
       <div class="product-card" v-if="val.category === selected">
         <div class="product-image">
-          <router-link :to="`/about/${val.id}`">
+          <router-link :to="`/productPage/${val.id}`">
             <img :src="val.image" alt="" />
           </router-link>
         </div>
