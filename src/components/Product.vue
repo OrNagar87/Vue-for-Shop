@@ -15,6 +15,20 @@
           <AddToCart @click="add(val.id)" :id="val.id" />
         </div>
       </div>
+      <div class="product-card" v-else-if="selected === 'all'">
+        <div class="product-image">
+          <router-link :to="`/productPage/${val.id}`">
+            <img :src="val.image" alt="" />
+          </router-link>
+        </div>
+        <div class="product-info">
+          <h5>{{ val.title }}</h5>
+          <h6>{{ val.price }}$</h6>
+        </div>
+        <div class="adding">
+          <AddToCart @click="add(val.id)" :id="val.id" />
+        </div>
+      </div>
     </section>
   </div>
 </template>

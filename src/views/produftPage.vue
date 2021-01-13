@@ -1,13 +1,18 @@
 <template>
   <div>
     productPage
-    <img class="pimg" :src="ourproduct.image" alt="" />
-    <div class="product-info">
-      <h2>{{ ourproduct.title }}</h2>
-      <h3>{{ ourproduct.price }}$</h3>
-      <h4>{{ ourproduct.description }}</h4>
+    <div class="ifID" v-if="ourproduct">
+      <img class="pimg" :src="ourproduct.image" alt="" />
+      <div class="product-info">
+        <h2>{{ ourproduct.title }}</h2>
+        <h3>{{ ourproduct.price }}$</h3>
+        <h4>{{ ourproduct.description }}</h4>
+      </div>
+      <AddToCart />
     </div>
-    <AddToCart />
+    <div v-else>
+      המוצר לא נמצא במערכת אנא חזור לדף הבית ובחר מוצר
+    </div>
   </div>
 </template>
 
@@ -27,12 +32,12 @@ export default {
   computed: {},
 
   mounted() {
-    axios.get("https://fakestoreapi.com/products").then((resp) => {
-      console.log(resp.data);
-      var index = this.$route.params;
-      console.log(resp.data[index.id]);
-      this.ourproduct = resp.data[index.id - 1];
-    });
+    axios
+      .get("https://fakestoreapi.com/products/" + this.$route.params.id)
+      .then((resp) => {
+        console.log(resp.data);
+        this.ourproduct = resp.data;
+      });
   },
 };
 </script>
@@ -40,6 +45,7 @@ export default {
 <style>
 .pimg {
   height: 200px;
+  width: 200px;
   margin-left: 40%;
   display: block;
   -webkit-transform: scale(1);

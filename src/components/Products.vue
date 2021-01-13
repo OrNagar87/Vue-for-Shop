@@ -19,7 +19,6 @@
       <button class="remove_item" @click="removeLastItem()">remove item</button>
       <div class="cart">Cart Quantity:{{ cart }}</div>
     </nav>
-
     <Product :objects="objects" :selected="selected" :add="AddCart" />
   </div>
 </template>
@@ -34,7 +33,7 @@ import Product from "./Product";
 export default {
   data() {
     return {
-      selected: "men clothing",
+      selected: "all",
       objects: [],
       cart: 0,
     };
